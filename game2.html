@@ -102,9 +102,10 @@
     </div>
     <script>
         let score = 0
-        let countdown = 5
+        let countdown = 20
         let timer = 0
         let targetnum = 24
+        let speed = 0
         let j = 2
         function move(zombie) {
             const top = Math.round(Math.random() * 70) + '%'
@@ -120,7 +121,7 @@
             // 重設
             score = 0
             $('#text-score').text(score)
-            countdown = 10
+            countdown = 20
             $('#text-time').text(countdown)
 
             $('#target-num').text(targetnum)
@@ -136,8 +137,8 @@
                 $('#text-time').text(countdown)
 
                 if ($('#game .zombie').length < 30) {
-                    const top = Math.round(Math.random() * 70) + '%'
-                    const left = Math.round(Math.random() * 70) + '%'
+                    const top = Math.round(Math.random() * 90) + '%'
+                    const left = Math.round(Math.random() * 90) + '%'
                     const num = Math.round(Math.random() * 10) - 2
                     const zombie = $(`<button class="number nes-btn" value="${num}" style="top: ${top}; left: ${left}">${num}</button>`)
                     $('#game').append(zombie)
@@ -151,7 +152,7 @@
                     // 重新啟用開始按鈕
                     $('#btn-start').attr('disabled', false)
                     if (score >= targetnum) {
-                        targetnum = targetnum * 2
+                        // targetnum = targetnum * 2
                         $('#target-num').text(targetnum)
 
                         Swal.fire({
@@ -192,8 +193,6 @@
         })
 
         $('#game').on('click', '.number', function () {
-            // $(this).attr('src', './blood.png')
-            // $(this).removeClass('zombie').addClass('blood')
             $(this).remove()
             $(this).stop()
             score += parseInt($(this).val())
