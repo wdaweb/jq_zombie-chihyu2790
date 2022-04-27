@@ -17,13 +17,11 @@
 
     <title>Document</title>
     <style>
+        html,
         body {
             font-family: 'Press Start 2P', cursive;
-            /* background-size: cover; */
-            /* background: rgb(0, 0, 0); */
-
-            background-image: url('./images/bg.jpg');
-
+            height: 100%;
+            background: #ff99e7;
         }
 
         .container {
@@ -33,10 +31,20 @@
             left: 0;
             margin: auto;
             position: absolute;
-            height: 900px;
-            width: 700px;
+
+            height: 700px;
+            width: 450px;
+
             background: #cf61f6;
+
+            border: 5px solid rgb(80, 27, 107);
+            border-radius: 15px 15px 15px 15px;
+            border-bottom-right-radius: 25% 20%;
+
+
+            box-sizing: border-box;
             text-align: center;
+
         }
 
         input {
@@ -44,22 +52,10 @@
         }
 
         #header {
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, 0);
-            height: 220px;
-            background: #fa79c9;
-            width: 105%;
-            padding: 40px;
-            border-top: 10px solid #ffb7da;
-            border-bottom: 10px solid #cf61f6;
-            text-shadow:
-                -5px 0px 0px #ffffff,
-                0px -5px 0px #ffffff,
-                0px 5px 0px #ffffff,
-                5px 0px 0px #ffffff,
-                0px 10px 0px #70d0e8;
-
+            height: 30px;
+            background: #7dfa79;
+            width: 100%;
+            border-bottom: 5px solid rgb(80, 27, 107);
             /* box-shadow: inset 0 -10px 0px 6px #cf61f6; */
         }
 
@@ -87,32 +83,29 @@
         }
 
         #content {
-            position: absolute;
-            left: 50%;
-            top: 25%;
             width: 100%;
-            height: 450px;
-            transform: translate(-50%, 0);
-            background: #fa79c9;
+            height: 300px;
+            position: relative;
+            background: #55ff2a;
+            padding: 25px;
+            padding-bottom: 0px;
         }
 
-        /* #game-box {
-            width: 620px;
-            height: 420px;
-            left: 50%;
-            top: 50%;
+        .contentbox {
+            width: 100%;
+            height: 275px;
+            background: #312aff;
 
-            transform: translate(-50%, -50%);
-            position: absolute;
-            background: #5818c6;
-        } */
+            border-radius: 15px 15px 15px 15px;
+            border-bottom-right-radius: 25% 20%;
+            position: relative;
+        }
 
         #game {
-            width: 600px;
-            height: 400px;
-            left: 50%;
+            width: 80%;
+            height: 80%;
             top: 50%;
-
+            left: 50%;
             transform: translate(-50%, -50%);
             overflow: hidden;
             position: absolute;
@@ -149,25 +142,24 @@
         }
 
         #game .trophy {
-
             opacity: 0;
         }
 
-        #footer {
+        /* #footer {
             width: 100%;
-            height: 180px;
+            height: 50px;
             top: 75%;
             position: absolute;
-            background: url('./images/board.jpg');
+            background: #fa79c9;
             background-size: cover;
-        }
+        } */
     </style>
 </head>
 
 <body>
     <div class="container">
         <div id="header">
-            <div class="title">
+            <!-- <div class="title">
                 <span>C1ick&C0unt</span>
                 <section class="icon-list">
                     <i class="nes-icon star is-large"></i>
@@ -175,19 +167,16 @@
                 <section class="icon-list">
                     <i class="nes-icon star is-large"></i>
                 </section>
-            </div>
+            </div> -->
         </div>
         <div id="content">
-
-            <div id="game" class="nes-container is-rounded">
-                <div class="card-1">
+            <div class="contentbox">
+                <div id="game" class="nes-container is-rounded">
                     <button class="nes-btn is-success" value="start" id="btn-start">start</button>
                     <p>target: <span id="target-num">0</span></p>
                     <p>level:<span id="speed-level">0</span></p>
                     <p>Score: <span id="text-score">0</span></p>
                     <p>second: <span id="text-time">0</span></p>
-                </div>
-                <div class="card-2">
                     <section class="icon-list">
                         <i class="nes-icon heart"></i>
                         <i class="nes-icon heart"></i>
@@ -199,12 +188,9 @@
                         <i class="nes-icon trophy"></i>
                     </section>
                 </div>
-                <div class="card-3"></div>
             </div>
-
         </div>
-        <div id="footer"></div>
-
+        <!-- <div id="footer"></div> -->
     </div>
     <script>
         let score = 0
