@@ -19,20 +19,23 @@
     <style>
         body {
             font-family: 'Press Start 2P', cursive;
-            /* background: url(./images/Forest_background_1.webp); */
-            background-size: cover;
+            /* background-size: cover; */
+            /* background: rgb(0, 0, 0); */
+
+            background-image: url('./images/bg.jpg');
+
         }
 
         .container {
-            top: 0;
+            top: 0%;
             right: 0;
             bottom: 0;
             left: 0;
             margin: auto;
             position: absolute;
-            height: 700px;
+            height: 900px;
             width: 700px;
-            background: wheat;
+            background: #cf61f6;
             text-align: center;
         }
 
@@ -40,24 +43,81 @@
             font-family: 'Press Start 2P', cursive;
         }
 
+        #header {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            height: 220px;
+            background: #fa79c9;
+            width: 105%;
+            padding: 40px;
+            border-top: 10px solid #ffb7da;
+            border-bottom: 10px solid #cf61f6;
+            text-shadow:
+                -5px 0px 0px #ffffff,
+                0px -5px 0px #ffffff,
+                0px 5px 0px #ffffff,
+                5px 0px 0px #ffffff,
+                0px 10px 0px #70d0e8;
+
+            /* box-shadow: inset 0 -10px 0px 6px #cf61f6; */
+        }
+
+        #header .title {
+            background: #5818c6;
+            height: 100%;
+            box-shadow: inset 0 0 0px 10px #cf61f6;
+            padding: 15px;
+
+        }
+
+        #header span {
+            text-align: center;
+            line-height: 80px;
+            color: #70d0e8;
+            font-size: 38px;
+        }
+
+        #header .title .icon-list {
+            float: left;
+        }
+
+        #header .title .icon-list:nth-child(2) {
+            float: right;
+        }
+
+        #content {
+            position: absolute;
+            left: 50%;
+            top: 25%;
+            width: 100%;
+            height: 450px;
+            transform: translate(-50%, 0);
+            background: #fa79c9;
+        }
+
+        /* #game-box {
+            width: 620px;
+            height: 420px;
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+            position: absolute;
+            background: #5818c6;
+        } */
+
         #game {
             width: 600px;
             height: 400px;
             left: 50%;
-            transform: translate(-50%);
+            top: 50%;
+
+            transform: translate(-50%, -50%);
             overflow: hidden;
             position: absolute;
             cursor: url('') 50 50, auto;
-        }
-
-        #game img {
-            height: 150px;
-            position: absolute;
-            /* 無法被選取 */
-            user-select: none;
-            /* 無法拖曳 */
-            -webkit-user-drag: none;
-            -webkit-user-select: none;
+            background: #5818c6;
         }
 
         .number {
@@ -69,35 +129,81 @@
             -webkit-user-select: none;
         }
 
-        .blood {
-            /* 忽略點擊事件 */
-            pointer-events: none;
-        }
+        /* 忽略點擊事件 */
+        /* pointer-events: none; */
 
         .nes-btn {
             border-image-repeat: stretch !important;
         }
 
-        .icon-list {
-            text-align: left;
+        #game .icon-list {
+            float: right;
+            user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+
+        }
+
+        #game .icon-list:nth-child(2) {
+            float: left;
+        }
+
+        #game .trophy {
+
+            opacity: 0;
+        }
+
+        #footer {
+            width: 100%;
+            height: 180px;
+            top: 75%;
+            position: absolute;
+            background: url('./images/board.jpg');
+            background-size: cover;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <button class="nes-btn is-success" value="start" id="btn-start">start</button>
-        <p>target: <span id="target-num">0</span></p>
-        <p>Score: <span id="text-score">0</span></p>
-        <p>second: <span id="text-time">0</span></p>
-        <div id="game" class="nes-container is-rounded">
-            <section class="icon-list">
-                <i class="nes-icon heart"></i>
-                <i class="nes-icon heart"></i>
-                <i class="nes-icon heart"></i>
-            </section>
+        <div id="header">
+            <div class="title">
+                <span>C1ick&C0unt</span>
+                <section class="icon-list">
+                    <i class="nes-icon star is-large"></i>
+                </section>
+                <section class="icon-list">
+                    <i class="nes-icon star is-large"></i>
+                </section>
+            </div>
+        </div>
+        <div id="content">
+
+            <div id="game" class="nes-container is-rounded">
+                <div class="card-1">
+                    <button class="nes-btn is-success" value="start" id="btn-start">start</button>
+                    <p>target: <span id="target-num">0</span></p>
+                    <p>level:<span id="speed-level">0</span></p>
+                    <p>Score: <span id="text-score">0</span></p>
+                    <p>second: <span id="text-time">0</span></p>
+                </div>
+                <div class="card-2">
+                    <section class="icon-list">
+                        <i class="nes-icon heart"></i>
+                        <i class="nes-icon heart"></i>
+                        <i class="nes-icon heart"></i>
+                    </section>
+                    <section class="icon-list">
+                        <i class="nes-icon trophy"></i>
+                        <i class="nes-icon trophy"></i>
+                        <i class="nes-icon trophy"></i>
+                    </section>
+                </div>
+                <div class="card-3"></div>
+            </div>
 
         </div>
+        <div id="footer"></div>
 
     </div>
     <script>
@@ -106,6 +212,7 @@
         let timer = 0
         let targetnum = 24
         let speed = 0
+        let trophynum = 0
         let j = 2
         function move(zombie) {
             const top = Math.round(Math.random() * 70) + '%'
@@ -131,16 +238,18 @@
                     $(this).css('opacity', '1')
                 })
             }
+
             timer = setInterval(function () {
                 // 倒數
-                countdown--
-                $('#text-time').text(countdown)
+                console.log(countdown);
+                countdown = countdown - 1 * ((10 - speed) / 10)
+                $('#text-time').text(parseInt(countdown))
 
                 if ($('#game .zombie').length < 30) {
                     const top = Math.round(Math.random() * 90) + '%'
                     const left = Math.round(Math.random() * 90) + '%'
-                    const num = Math.round(Math.random() * 10) - 2
-                    const zombie = $(`<button class="number nes-btn" value="${num}" style="top: ${top}; left: ${left}">${num}</button>`)
+                    const num = Math.round(Math.random() * 10) - 4
+                    const zombie = $(`<button class="number nes-btn is-primary" value="${num}" style="top: ${top}; left: ${left}">${num}</button>`)
                     $('#game').append(zombie)
                     move(zombie)
                 }
@@ -152,8 +261,13 @@
                     // 重新啟用開始按鈕
                     $('#btn-start').attr('disabled', false)
                     if (score >= targetnum) {
-                        // targetnum = targetnum * 2
+
                         $('#target-num').text(targetnum)
+                        speed++
+                        $('.trophy').eq(trophynum).css('opacity', '1')
+                        trophynum++
+
+
 
                         Swal.fire({
                             title: 'YOU WIN!',
@@ -163,20 +277,30 @@
                             imageHeight: 100,
                             imageAlt: 'Custom image',
                         })
+
                     } else if ($('.heart').eq(1).css('opacity') != '0') {
 
                         $('#target-num').text(targetnum)
                         $('.heart').eq(j).css('opacity', '0')
                         j--
+
+
+
                         Swal.fire({
                             title: 'AGAIN',
                             text: `Time's up，You get ${score}，But You still have ${j + 1} lifes `,
                             icon: 'error',
                         })
+
                     } else {
                         targetnum = 24
                         $('.heart').eq(j).css('opacity', '0')
                         j = 2
+                        $('.trophy').each(function () {
+                            $(this).css('opacity', '0')
+                        })
+
+
                         Swal.fire({
                             title: 'GAME OVER',
                             text: `Time's up，You get ${score} `,
@@ -186,10 +310,11 @@
                             imageHeight: 200,
                             imageAlt: 'Custom image',
                         })
+
                     }
 
                 }
-            }, 1000)
+            }, 1000 - speed * 100)
         })
 
         $('#game').on('click', '.number', function () {
