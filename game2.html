@@ -12,10 +12,16 @@
     <script src="./CSS/sweetalert.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="./CSS/pixel.css">
 
-    <title>Document</title>
+    <title>Game Boy</title>
     <style>
         html,
         body {
@@ -25,8 +31,7 @@
             background: linear-gradient(#c4ff6f, #adffd8)
         }
 
-        /* clip-path: polygon(0 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%);
- */
+
         .clearfix::after {
             content: '';
             display: block;
@@ -44,7 +49,7 @@
             height: 700px;
             width: 450px;
 
-            background: #ffd943;
+            background: #ffe224;
             color: #1b60c0;
             border: 5px solid #1b60c0;
             border-radius: 15px 15px 15px 15px;
@@ -70,26 +75,31 @@
             /* box-shadow: inset 0 -10px 0px 6px #cf61f6; */
         }
 
-        #header .title {
-            background: #7dfa79;
-            height: 100%;
-            box-shadow: inset 0 0 0px 10px #cf61f6;
-            padding: 15px;
-
+        .title {
+            position: fixed;
+            /* background: lightcoral; */
+            left: 50%;
+            transform: translate(-50%, 0%);
+            height: 100px;
+            width: 600px;
+            padding: 10px;
+            text-align: center;
         }
 
-        #header span {
+        .title span {
             text-align: center;
             line-height: 80px;
-            color: #70d0e8;
+            color: #1b60c0;
+            /* text-shadow: 5px 5px 0px #ffffff,
+                -5px -5px 0px #ffffff; */
             font-size: 38px;
         }
 
-        #header .title .icon-list {
+        .title .icon-list {
             float: left;
         }
 
-        #header .title .icon-list:nth-child(2) {
+        .title .icon-list:nth-child(2) {
             float: right;
         }
 
@@ -110,9 +120,10 @@
             border-radius: 15px 15px 15px 15px;
             border-bottom-right-radius: 25% 20%;
             padding-top: 30px;
-            padding-left: 60px;
-            padding-right: 60px;
+            padding-left: 50px;
+            padding-right: 50px;
             padding-bottom: 30px;
+            border: 5px double #1b60c0;
         }
 
         .screen {
@@ -120,18 +131,37 @@
             height: 100%;
             background: #87ffa9;
             position: relative;
+            box-sizing: border-box;
+            border: 4px solid #2671db;
+            border-radius: 5px;
         }
 
         #game {
-            width: 100%;
-            height: 100%;
+            width: 95%;
+            height: 95%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            overflow: hidden;
+            /* overflow: hidden; */
             position: absolute;
             cursor: url('') 50 50, auto;
-            background: #87ffa9;
+            background: hsl(137, 100%, 60%);
+            text-align: left;
+            font-size: 11px;
+        }
+
+        #game .word-box {
+            background: rgb(0, 17, 167);
+            position: absolute;
+            width: 100%;
+        }
+
+        #game .icon-box {
+            position: absolute;
+            bottom: 0;
+            transform: translate();
+            width: 100%;
+            background: lightgray;
         }
 
         .number {
@@ -155,7 +185,7 @@
             user-select: none;
             -webkit-user-drag: none;
             -webkit-user-select: none;
-
+            background: lightcoral;
         }
 
         #game .icon-list:nth-child(2) {
@@ -169,7 +199,24 @@
         #footer .footer-top {
             width: 100%;
             height: 60px;
-            background: #ffea43;
+            background: #f243ff;
+            /* background: #ffea43; */
+            text-align: left;
+            padding-left: 25px;
+            font-family: 'Itim', cursive;
+            font-style: italic;
+
+        }
+
+        #footer .footer-top span {
+            font-size: 23px;
+        }
+
+        #footer .footer-top span:nth-child(2) {
+            font-family: 'Bungee Outline', cursive;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 30px;
         }
 
         #footer .footer-middle {
@@ -184,7 +231,22 @@
             height: 110px;
             width: 110px;
             float: left;
-            background: #d4ff09;
+            background: #ff0909;
+            clip-path: polygon(0 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%);
+            position: relative;
+
+        }
+
+        .cross-box::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100px;
+            width: 100px;
+            background: #1b60c0;
+            clip-path: polygon(0 37%, 37% 37%, 37% 0, 63% 0, 63% 37%, 100% 37%, 100% 63%, 63% 63%, 63% 100%, 37% 100%, 37% 63%, 0 63%);
         }
 
         #footer .button-box {
@@ -262,6 +324,14 @@
             background: #8dffd3;
         }
 
+        .circle div button {
+            box-sizing: border-box;
+            border: 0;
+            background-color: rgba(255, 255, 255, 0);
+            outline: none;
+            width: 100%;
+            height: 100%;
+        }
 
         #footer .footer-bottom span {
             font-size: 11px;
@@ -292,43 +362,54 @@
 </head>
 
 <body>
+    <!-- <button class="nes-btn is-success" value="start" id="btn-start">start</button> -->
+
+    <div class="title clearfix">
+        <!-- <span>C1ick&C0unt</span> -->
+        <span>0VER24</span>
+        <section class="icon-list">
+            <i class="nes-icon star"></i>
+        </section>
+        <section class="icon-list">
+            <i class="nes-icon star"></i>
+        </section>
+    </div>
+
     <div class="container">
         <div id="header">
-            <!-- <div class="title">
-                <span>C1ick&C0unt</span>
-                <section class="icon-list">
-                    <i class="nes-icon star is-large"></i>
-                </section>
-                <section class="icon-list">
-                    <i class="nes-icon star is-large"></i>
-                </section>
-            </div> -->
+
         </div>
         <div id="content">
             <div class="contentbox">
                 <div class="screen">
                     <div id="game">
-                        <button class="nes-btn is-success" value="start" id="btn-start">start</button>
-                        <p>target: <span id="target-num">0</span></p>
-                        <p>level:<span id="speed-level">0</span></p>
-                        <p>Score: <span id="text-score">0</span></p>
-                        <p>second: <span id="text-time">0</span></p>
-                        <section class="icon-list">
-                            <i class="nes-icon heart is-small"></i>
-                            <i class="nes-icon heart is-small"></i>
-                            <i class="nes-icon heart is-small"></i>
-                        </section>
-                        <section class="icon-list">
-                            <i class="nes-icon trophy is-small"></i>
-                            <i class="nes-icon trophy is-small"></i>
-                            <i class="nes-icon trophy is-small"></i>
-                        </section>
+                        <!-- <span>target: <span id="target-num">0</span></span> -->
+                        <div class="word-box">
+                            <span>level:<span id="speed-level">0</span></span>
+                            <span>Score:<span id="text-score">0</span></span>
+                            <span>Time:<span id="text-time">0</span></span>
+                        </div>
+                        <div class="icon-box">
+                            <section class="icon-list">
+                                <i class="nes-icon heart "></i>
+                                <i class="nes-icon heart "></i>
+                                <i class="nes-icon heart "></i>
+                            </section>
+                            <section class="icon-list">
+                                <i class="nes-icon trophy"></i>
+                                <i class="nes-icon trophy"></i>
+                                <i class="nes-icon trophy"></i>
+                            </section>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
         <div id="footer">
-            <div class="footer-top"></div>
+            <div class="footer-top"><span>CLICK24</span>
+                <span>GAME BOY</span>
+            </div>
             <div class="clearfix footer-middle">
                 <div class="cross-box">
                     <div class="cross"></div>
@@ -347,7 +428,7 @@
                 </div>
                 <div class="start-bottom">
                     <div class="circle">
-                        <div></div>
+                        <div><button id="btn-start"></button></div>
                     </div>
                     <span>START</span>
                 </div>
