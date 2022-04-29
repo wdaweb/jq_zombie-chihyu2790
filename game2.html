@@ -17,8 +17,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Dekko&family=East+Sea+Dokdo&family=Kavivanar&family=Pangolin&family=Permanent+Marker&family=Sriracha&display=swap"
+        rel="stylesheet">
 
-
+    <link rel="stylesheet" href="./CSS/all.css">
     <link rel="stylesheet" href="./CSS/pixel.css">
 
     <title>Game Boy</title>
@@ -49,30 +53,27 @@
             height: 700px;
             width: 450px;
 
-            background: #ffe224;
+            /* background: #ffe940; */
+            background: linear-gradient(#fff5c1 0.7%, #ffef73 0.7%, #ffef73 40%, #ffe940 40%, #ffe940 50%);
             color: #1b60c0;
-            border: 5px solid #1b60c0;
+            border: 3px solid #1b60c0;
             border-radius: 15px 15px 15px 15px;
             border-bottom-right-radius: 25% 20%;
 
 
             box-sizing: border-box;
             text-align: center;
-            box-shadow: inset 0px -5px 0px 0px #b9ff47;
-
+            /* box-shadow:
+                inset 0px -5px 0px 0px #b9ff47,
+                0px 0px 1px 1px #1b60c0,
+                20px 20px 0px 0px #0efff3; */
+            box-shadow:
+                inset 0px -5px 0px 0px #b9ff47,
+                0px 0px 1px 1px #1b60c0;
         }
 
         input {
             font-family: 'Press Start 2P', cursive;
-        }
-
-        #header {
-            height: 30px;
-            background: #ffed5b;
-            box-shadow: inset 0px -7px 0px 0px #b9ff47;
-            width: 100%;
-            border-bottom: 5px solid #1b60c0;
-            /* box-shadow: inset 0 -10px 0px 6px #cf61f6; */
         }
 
         .title {
@@ -103,11 +104,54 @@
             float: right;
         }
 
+        #header {
+            height: 30px;
+            box-shadow: inset 0px -7px 0px 0px #b9ff47;
+            width: 100%;
+            border-bottom: 8px double #1b60c0;
+        }
+
+        #header div {
+
+            height: 100%;
+            width: 35px;
+            /* background-color: brown; */
+
+        }
+
+        #header div:first-child {
+            float: left;
+            border-right: 8px double #1b60c0;
+            position: relative;
+
+        }
+
+        #header div:first-child::after {
+            content: 'OFF﹒ON';
+            font-family: 'DotGothic16';
+            font-size: 14px;
+            font-weight: bold;
+            top: 8%;
+            left: 200%;
+            position: absolute;
+            width: 80px;
+            height: 20px;
+            border-radius: 15px;
+            line-height: 15px;
+            /* background: lightcoral; */
+            border: 2px solid #1b60c0;
+        }
+
+        #header div:last-child {
+            float: right;
+            border-left: 8px double #1b60c0;
+        }
+
         #content {
             width: 100%;
             height: 300px;
             position: relative;
-            background: #ffed5b;
+            background: #ffed66;
             padding: 25px;
             padding-bottom: 0px;
         }
@@ -126,14 +170,79 @@
             border: 5px double #1b60c0;
         }
 
+        .contentbox::before {
+            content: 'DOT MATRIX WITH STEREO SOUND';
+            font-family: 'DotGothic16';
+            font-size: 14px;
+
+            top: 12%;
+            left: 35%;
+            position: absolute;
+            width: 220px;
+            height: 20px;
+            /* border-radius: 15px; */
+            line-height: 15px;
+            font-weight: bolder;
+            background: #fff49f;
+            z-index: 5;
+        }
+
+        .contentbox::after {
+            content: '';
+            font-family: 'DotGothic16';
+            font-size: 14px;
+            font-weight: bold;
+            top: 12%;
+            left: 10%;
+            position: absolute;
+            width: 353px;
+            height: 14px;
+            /* border-radius: 15px; */
+            line-height: 15px;
+            /* background: rgb(255, 0, 0); */
+            border-top: 4px solid #1b60c0;
+            border-bottom: 4px solid #2cffc0;
+        }
+
         .screen {
             width: 100%;
             height: 100%;
-            background: #87ffa9;
+            background: #cdffc5;
             position: relative;
             box-sizing: border-box;
             border: 4px solid #2671db;
             border-radius: 5px;
+        }
+
+        .screen::before {
+            content: '';
+            font-family: 'DotGothic16';
+            font-size: 14px;
+            top: 35%;
+            left: -15%;
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            line-height: 15px;
+            border: 1px solid #2671db;
+            font-weight: bolder;
+            background: #8dffd3;
+            z-index: 5;
+        }
+
+        .screen::after {
+            content: 'BATTERY';
+            font-family: 'DotGothic16';
+            font-size: 13px;
+            top: 45%;
+            left: -19%;
+            position: absolute;
+            width: 90px;
+            height: 20px;
+            line-height: 15px;
+            font-weight: bolder;
+            text-align: left;
         }
 
         #game {
@@ -145,23 +254,45 @@
             /* overflow: hidden; */
             position: absolute;
             cursor: url('') 50 50, auto;
-            background: hsl(137, 100%, 60%);
-            text-align: left;
+            background: #a1fe8cab;
+            text-align: center;
             font-size: 11px;
         }
 
         #game .word-box {
-            background: rgb(0, 17, 167);
+            font-size: 19px;
+            font-weight: bolder;
+            font-family: 'DotGothic16', sans-serif;
+            /* background: rgb(0, 17, 167); */
             position: absolute;
             width: 100%;
+
+            /* 無法被選取 */
+            user-select: none;
+            /* 無法拖曳 */
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
         }
+
+        #game .word-box>span {
+            margin: 5px;
+        }
+
+        /* #game .word-box>span:first-child {
+            float: left;
+        }
+
+        #game .word-box>span:last-child {
+            float: right;
+        } */
+
 
         #game .icon-box {
             position: absolute;
             bottom: 0;
             transform: translate();
             width: 100%;
-            background: lightgray;
+            /* background: lightgray; */
         }
 
         .number {
@@ -185,7 +316,7 @@
             user-select: none;
             -webkit-user-drag: none;
             -webkit-user-select: none;
-            background: lightcoral;
+            /* background: lightcoral; */
         }
 
         #game .icon-list:nth-child(2) {
@@ -199,17 +330,21 @@
         #footer .footer-top {
             width: 100%;
             height: 60px;
-            background: #f243ff;
-            /* background: #ffea43; */
+            background: #ffec59;
             text-align: left;
             padding-left: 25px;
             font-family: 'Itim', cursive;
-            font-style: italic;
-
         }
 
         #footer .footer-top span {
+            padding-right: 3px;
             font-size: 23px;
+        }
+
+        #footer .footer-top span:first-child {
+            font-family: 'Kavivanar', cursive;
+            font-weight: bold;
+            font-size: 21px;
         }
 
         #footer .footer-top span:nth-child(2) {
@@ -219,10 +354,14 @@
             font-size: 30px;
         }
 
+        #footer .footer-top i {
+            font-size: 24px;
+        }
+
         #footer .footer-middle {
             width: 100%;
             height: 150px;
-            background: #ffe82e;
+            background: #ffea4c;
             padding: 25px;
         }
 
@@ -231,7 +370,7 @@
             height: 110px;
             width: 110px;
             float: left;
-            background: #ff0909;
+            background: #1b60c0;
             clip-path: polygon(0 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0 65%);
             position: relative;
 
@@ -243,9 +382,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            height: 100px;
-            width: 100px;
-            background: #1b60c0;
+            height: 105px;
+            width: 105px;
+            background: #8dffd3;
             clip-path: polygon(0 37%, 37% 37%, 37% 0, 63% 0, 63% 37%, 100% 37%, 100% 63%, 63% 63%, 63% 100%, 37% 100%, 37% 63%, 0 63%);
         }
 
@@ -253,7 +392,7 @@
             height: 80px;
             width: 160px;
             float: right;
-            background: #ffffff62;
+            background: #ffffff1f;
             border-radius: 45px;
             padding: 10px;
             box-sizing: border-box;
@@ -269,6 +408,25 @@
             height: 54px;
             border-radius: 50%;
             background: #8dffd3;
+            border: 4px double #1b60c0;
+            position: relative;
+            box-shadow:
+                -1px 6px 0px 0px #b9ff47,
+                inset 1px 3px 0px 0px #ffffffbe;
+        }
+
+        .button-box div::after {
+            content: 'A';
+            top: 140%;
+            left: 0;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            /* background: rgb(240, 128, 128); */
+        }
+
+        .button-box div:last-child:after {
+            content: 'B';
         }
 
         #footer .right {
@@ -277,6 +435,11 @@
             height: 54px;
             border-radius: 50%;
             background: #8dffd3;
+            border: 4px double #1b60c0;
+            box-shadow:
+                -1px 6px 0px 0px #b9ff47,
+                inset 1px 3px 0px 0px #ffffffb7;
+            position: relative;
         }
 
         #footer .footer-bottom {
@@ -285,6 +448,24 @@
             padding-left: 100px;
             /* background: #3b5052; */
             font-size: 0;
+            position: relative;
+        }
+
+        #footer .footer-bottom::after {
+            letter-spacing: 0.05rem;
+            content: 'PHONES';
+            font-family: 'DotGothic16';
+            font-size: 14px;
+            font-weight: bold;
+            top: 78%;
+            left: 35%;
+            position: absolute;
+            width: 75px;
+            height: 20px;
+            border-radius: 15px;
+            line-height: 15px;
+            /* background: lightcoral; */
+            border: 2px solid #1b60c0;
         }
 
         #footer .footer-bottom .select-bottom {
@@ -303,6 +484,7 @@
             /* background: #2c2894; */
             display: inline-block;
             transform: translate(10px, 10px) rotate(-30deg);
+
         }
 
         .circle {
@@ -321,7 +503,8 @@
             width: 100%;
             border: 3px solid #1b60c0;
             border-radius: 10px;
-            background: #8dffd3;
+            background: #d8fff0;
+            box-shadow: 0px 2px 0px 0px #b9ff47;
         }
 
         .circle div button {
@@ -339,9 +522,9 @@
 
         #footer .footer-bottom .vent {
 
-            width: 150px;
+            width: 160px;
             height: 100%;
-            /* background: #312aff; */
+            /* background: #ff8a2a; */
 
             display: inline-block;
             vertical-align: top;
@@ -351,33 +534,32 @@
         #footer .footer-bottom .vent>div {
             display: inline-block;
             height: 65px;
-            width: 9px;
-            background: #9fff3e;
+            width: 12px;
+            background: #1b76c0;
             text-align: center;
-            border: 2px solid #1b60c0;
+            border: 3px solid #1b60c0;
             border-radius: 15px;
-            margin-right: 15px;
+            margin-right: 12px;
+            box-shadow: inset -4px -4px 0px 0px #9fff3e;
         }
     </style>
 </head>
 
 <body>
-    <!-- <button class="nes-btn is-success" value="start" id="btn-start">start</button> -->
-
     <div class="title clearfix">
-        <!-- <span>C1ick&C0unt</span> -->
-        <span>0VER24</span>
-        <section class="icon-list">
+        <span>C1ick&C0unt</span>
+        <!-- <section class="icon-list">
             <i class="nes-icon star"></i>
         </section>
         <section class="icon-list">
             <i class="nes-icon star"></i>
-        </section>
+        </section> -->
     </div>
 
     <div class="container">
         <div id="header">
-
+            <div></div>
+            <div></div>
         </div>
         <div id="content">
             <div class="contentbox">
@@ -401,14 +583,14 @@
                                 <i class="nes-icon trophy"></i>
                             </section>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
         <div id="footer">
-            <div class="footer-top"><span>CLICK24</span>
+            <div class="footer-top"><span>CLICKING</span>
                 <span>GAME BOY</span>
+                <i class="fa-solid fa-alien-8bit"></i>
             </div>
             <div class="clearfix footer-middle">
                 <div class="cross-box">
@@ -441,7 +623,6 @@
                     <div></div>
                 </div>
             </div>
-
         </div>
     </div>
     <script>
