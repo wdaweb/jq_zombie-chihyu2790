@@ -32,7 +32,7 @@
             font-family: 'Press Start 2P', cursive;
             height: 100%;
             /* background:linear... 這樣的線性漸層其實是，背景圖片不是單純的背景(background-image)，所以既然是圖片，我們想用的話就需要高度 */
-            background: linear-gradient(#c4ff6f, #adffd8)
+            background: linear-gradient(#c4ff6e 0%, #8cffa3 50%, #adffda 80%)
         }
 
 
@@ -363,20 +363,39 @@
             height: 150px;
             background: #ffea4c;
             padding: 25px;
+            padding-left: 35px;
         }
 
         #footer .cross-box {
+            height: 110px;
+            width: 110px;
+            float: left;
+            position: relative;
+        }
 
+        .cross-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 140px;
+            width: 140px;
+            background: #fff292;
+            border-radius: 50%;
+            border: 3px solid #1b60c0;
+        }
+
+        #footer .cross {
             height: 110px;
             width: 110px;
             float: left;
             background: #1b60c0;
             clip-path: polygon(0% 40%, 4% 36%, 36% 36%, 36% 4%, 40% 0%, 60% 0%, 64% 4%, 64% 36%, 96% 36%, 100% 40%, 100% 60%, 96% 64%, 64% 64%, 64% 96%, 60% 100%, 40% 100%, 36% 96%, 36% 64%, 4% 64%, 0% 60%);
             position: relative;
-
         }
 
-        .cross-box::after {
+        .cross::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -388,17 +407,99 @@
             clip-path: polygon(0% 42%, 4% 38%, 38% 38%, 38% 4%, 42% 0%, 58% 0%, 62% 4%, 62% 38%, 96% 38%, 100% 42%, 100% 58%, 96% 62%, 62% 62%, 62% 96%, 58% 100%, 42% 100%, 38% 96%, 38% 62%, 4% 62%, 0% 58%);
         }
 
+        /* .cross .cross-left {
+            width: 100%;
+            height: 50%;
+            background: lightcoral;
+            transform: translate(0, 50%);
+            position: absolute;
+        } */
+
+        .cross-box .tringle-left {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 7.5px 9px 7.5px 0;
+            border-color: transparent #1b60c0 transparent transparent;
+            position: absolute;
+            top: 50%;
+            left: -10%;
+            transform: translate(0, -50%);
+            /* background: rgb(128, 240, 133); */
+        }
+
+        .cross-box .tringle-right {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 7.5px 0 7.5px 9px;
+            border-color: transparent transparent transparent #1b60c0;
+            position: absolute;
+            top: 50%;
+            right: -10%;
+            transform: translate(0, -50%);
+            /* background: rgb(128, 240, 133); */
+        }
+
+
+        .cross-box .tringle-top {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 7.5px 9px 7.5px;
+            border-color: transparent transparent #1b60c0 transparent;
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            /* background: rgb(128, 240, 133); */
+        }
+
+        .cross-box .tringle-bottom {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 9px 7.5px 0 7.5px;
+            border-color: #1b60c0 transparent transparent transparent;
+            position: absolute;
+            bottom: -10%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            /* background: rgb(128, 240, 133); */
+        }
+
+        .cross .cross-circle {
+            width: 28%;
+            height: 28%;
+            top: 50%;
+            left: 50%;
+            /* background: rgb(9, 255, 0); */
+            border: 4px double #1b60c0ce;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+        }
+
+
+        /* .cross .cross-top {
+            width: 50%;
+            height: 100%;
+            background: rgb(218, 128, 240);
+            transform: translate(50%, 0);
+            position: absolute;
+        } */
+
+
+
         #footer .button-box {
             height: 80px;
             width: 160px;
             float: right;
-            background: #ffffff1f;
+            background: #fff292;
             border-radius: 45px;
             padding: 10px;
             box-sizing: border-box;
-
             border: 3px solid #1b60c0;
-
             transform: translate(0px, 10px) rotate(-30deg);
         }
 
@@ -551,7 +652,7 @@
             left: 0;
             object-fit: cover;
             z-index: 0;
-            opacity: 0.1;
+            opacity: 0.03;
         }
     </style>
 </head>
@@ -608,7 +709,15 @@
             </div>
             <div class="clearfix footer-middle">
                 <div class="cross-box">
-                    <div class="cross"></div>
+                    <div class="tringle-top"></div>
+                    <div class="tringle-left"></div>
+                    <div class="tringle-right"></div>
+                    <div class="tringle-bottom"></div>
+                    <div class="cross">
+                        <div class="cross-top"></div>
+                        <div class="cross-left"></div>
+                        <div class="cross-circle"></div>
+                    </div>
                 </div>
                 <div class="button-box">
                     <div class="left"></div>
